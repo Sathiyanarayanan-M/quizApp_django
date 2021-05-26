@@ -39,6 +39,8 @@ class Authentication:
             if user is not None:
                 if user.is_active:
                     login(request,user)
+                    if user.is_staff:
+                        return redirect('staff')
                     return redirect('dashboard')
                 else:
                     return HttpResponse( "<script>alert('Something went Wrong'); window.location.href = '/login';</script>")

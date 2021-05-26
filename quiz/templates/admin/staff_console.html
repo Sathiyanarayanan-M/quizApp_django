@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{% static 'images/staff.png' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Admins</h5>
+      <p class="card-text">Create and delete Admins</p>
+      <a href="staff-list" class="btn btn-primary">Manage</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{% static 'images/quizzes.png' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Quizzes</h5>
+      <p class="card-text">Create and Delete Quiz</p>
+      <a href="quiz-list" class="btn btn-primary">Manage</a>
+    </div>
+  </div>
+  {% endblock %}
