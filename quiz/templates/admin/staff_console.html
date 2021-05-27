@@ -1,7 +1,43 @@
 {% extends 'index.html' %}
 {% block content %}
 {% load static %}
-<div class="card" style="width: 18rem;">
+<div class="row row-cols-1 row-cols-md-4">
+    <div class="col mb-4 ">
+      <div class="card h-70">
+        <div class="view overlay">
+          <img class="card-img-top" src="{% static 'images/staff.png' %}"
+            alt="Card image cap">
+          <a href="#">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Admins</h5>
+          <p class="card-text">Create and delete Admins</p>
+          <a href="staff-list" class="btn btn-primary">Manage</a>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4 ">
+      <div class="card h-100">
+        <div class="view overlay">
+          <img class="card-img-top" src="{% static 'images/quizzes.png' %}"
+            alt="Card image cap">
+          <a href="#">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Quizzes</h5>
+      <p class="card-text">Create and Delete Quiz</p>
+      <a href="quiz-list" class="btn btn-primary">Manage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% endblock %}
+  <!-- <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="{% static 'images/staff.png' %}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">Admins</h5>
@@ -16,5 +52,4 @@
       <p class="card-text">Create and Delete Quiz</p>
       <a href="quiz-list" class="btn btn-primary">Manage</a>
     </div>
-  </div>
-  {% endblock %}
+  </div> -->
