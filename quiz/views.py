@@ -29,7 +29,6 @@ class QuizView:
         if request.user.is_staff:
             if request.method == 'POST':
                 quiz_name = request.POST['quizname']
-                print(serializers.serialize('json',request.user))
                 quiz_obj = QuizModel(quiz_name=quiz_name,author=request.user.get_full_name())
                 quiz_obj.save()
                 for i in range(10):
@@ -54,3 +53,7 @@ class QuizView:
     
     def staflist(request):
         return render(request,'admin/staff_list.html')
+    
+    def delete_quiz(request,quiz_id):
+        QuizModel.objects.get(id=quiz_id).delete()
+        return redirect('/staff/quiz-list')
