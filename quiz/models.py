@@ -25,6 +25,11 @@ class Questions(models.Model):
     
     def __str__(self):
         return self.question
-
+class UserResult(models.Model):
+    user = models.CharField(max_length=200)
+    score = models.CharField(max_length=2)
+    quiz_id = models.CharField(max_length=200)
     
+    def __str__(self):
+        return self.user
 

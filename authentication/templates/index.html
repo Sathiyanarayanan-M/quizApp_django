@@ -59,6 +59,11 @@
           <a class="nav-link" href="/staff/quiz-list">
             <i class="fas fa-chalkboard-teacher"></i>Quizzes</a>
         </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/user/quizzes">
+            <i class="fas fa-chalkboard-teacher"></i>Quizzes</a>
+        </li>
         {% endif %}
 
         {% if user.is_superuser %}

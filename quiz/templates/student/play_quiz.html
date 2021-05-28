@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<script>
+        $(document).ready(function(){
+        $('.launch-modal').click(function(){
+            var radio_value = $('input[name="choosed"]:checked').val();
+            console.log(radio_value)
+            if (radio_value == '{{question_obj.answer}}'){
+                $('.modal-title').html('<p style="color:green">&#10004;</p>Correct');
+                $('.explanation').html('{{question_obj.explanation}}');
+                $('input[name=result]').val('correct');
+            }
+            else{
+                $('.modal-title').html('<p style="color:red">&#10006;</p>Incorrect');
+                $('.explanation').html('{{question_obj.explanation}}');
+                $('input[name=result]').val('incorrect');
+            }
+            $('#myModal').modal({
+                backdrop: 'static'
+            });
+        }); 
+
+    });
+</script>
+<form method="POST">
+    {% csrf_token %}
+    <h2>Q{{qn_no|add:"1"}}: {{question_obj.question}}</h2>
+    <input type="radio" id="option1" name="choosed" value="option1">
+    <label for="option1">{{question_obj.option1}}</label><br>
+    <input type="radio" id="option2" name="choosed" value="option2">
+    <label for="option2">{{question_obj.option2}}</label><br>
+    <input type="radio" id="option3" name="choosed" value="option3"}>
+    <label for="option3">{{question_obj.option3}}</label><br>  
+    <input type="radio" id="option4" name="choosed" value="option4">
+    <label for="option4">{{question_obj.option4}}</label><br><br>
+    <input type="button" class="btn btn-lg btn-primary launch-modal" value="Launch Demo Modal">
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                </div>
+                <div class="modal-body">
+                    <h6 class="explanation"></h6>
+                    <!-- <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                    <p class="text-info"><small><strong>Note:</strong> Press Tab key on the keyboard to enter inside the modal window after that press the Esc key. By default keyboard option is true that means modal hide on the press of escape key.</small></p> -->
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="result" value="">
+    <input type="hidden" name="qn_no" value="{{qn_no}}">
+</form>
+{% endblock %}
+
+<!-- <div id="resultDiv" style="display: none;">
+    <input class="btn btn-primary" type="submit" value="Submit">
+</div> -->

@@ -1,9 +1,11 @@
+from django.contrib.auth.models import User
+from django.db.models.expressions import ExpressionList
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core import serializers
 from django.http import HttpResponse
-from .models import Questions,QuizModel
+from .models import Questions,QuizModel,UserResult
 
 # Create your views here.
 class QuizView:
@@ -64,6 +66,47 @@ class QuizView:
         return redirect('/staff/quiz-list')
 
 class QuizPlayers:
+    @login_required
+    def play_quiz(request,quiz_id,qn_no):
+        all_q = Questions.objects.filter(quiz_id=int(quiz_id))
+        if request.method == 'POST':
+            qn_no = int(request.POST['qn_no'])+1
+            if qn_no in range(0,10):
+                question_obj = all_q[int(qn_no)]
+                answer_choosed = request.POST['result']
+                if UserResult.objects.filter(user = request.user.username,quiz_id=quiz_id).exists():
+                    if answer_choosed == 'correct':
+                        u = UserResult.objects.get(user = request.user.username,quiz_id=quiz_id)
+                        u.score = str(int(u.score) + 1)
+                        u.save()
+                        return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
+                    else:
+                        return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
+                else:
+                   if answer_choosed == 'correct':
+                       u =  UserResult(user = request.user.username,quiz_id=quiz_id,score=1)
+                       u.save()
+                       return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
+                   else:
+                       u =  UserResult(user = request.user.username,quiz_id=quiz_id,score=0)
+                       u.save()
+                       return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
+            else:
+                if UserResult.objects.filter(user = request.user.username,quiz_id=quiz_id).exists():
+                    score = UserResult.objects.get(user = request.user.username,quiz_id=quiz_id).score
+                    return HttpResponse("<script>alert('Your Score: "+score+"'); window.location.href = '/user/quizzes/';</script>")
+                else:
+                    return HttpResponse("<script>alert('Something Went Wrong'); window.location.href = '/user/quizzes/';</script>")
+        else:
+            question_obj = all_q[0]
+            if UserResult.objects.filter(user=request.user.username,quiz_id=quiz_id).exists():
+                UserResult.objects.get(user=request.user.username,quiz_id=quiz_id).delete()
+                return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
+            return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
+    @login_required
+    def student_quizzes(request):
+        return render(request,'student/student_quizzes.html',{"quizzes":QuizModel.objects.all()})
+
     def restricted_access(request):
         if request.user.is_active and request.user.is_authenticated:
             if request.user.is_staff:
