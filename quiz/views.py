@@ -11,7 +11,11 @@ from .models import Questions,QuizModel,UserResult
 class QuizView:
     @login_required
     def dashboard(request):
-        return render(request,'dashboard.html')
+        quiz_ids = {quiz.quiz_id:quiz.score for quiz in UserResult.objects.filter(user=request.user.username)}
+        quiz_scores = list(quiz_ids.values())
+        quiz_names = [QuizModel.objects.get(id=int(ids)).quiz_name for ids in list(quiz_ids.keys())]
+        played_quizzes = dict(zip(quiz_names,quiz_scores))
+        return render(request,'dashboard.html',{"played_quizzes":played_quizzes.items()})
 
     @user_passes_test(lambda u: (u.is_staff and u.is_active),login_url='restricted_access')
     def admin_console(request):
@@ -100,7 +104,9 @@ class QuizPlayers:
         else:
             question_obj = all_q[0]
             if UserResult.objects.filter(user=request.user.username,quiz_id=quiz_id).exists():
-                UserResult.objects.get(user=request.user.username,quiz_id=quiz_id).delete()
+                u=UserResult.objects.get(user=request.user.username,quiz_id=quiz_id)
+                u.score = '0'
+                u.save()
                 return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
             return render(request,'student/play_quiz.html',{'question_obj':question_obj,'qn_no':int(qn_no),'quiz_id':quiz_id})
     @login_required

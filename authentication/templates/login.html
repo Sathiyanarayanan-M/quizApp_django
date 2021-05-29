@@ -1,18 +1,24 @@
 {% extends 'index.html'  %} {% block content %}
-
- <h1> Student Login Form </h1>
-    <form method="POST">
+{% load static %}
+ <div class="container login-container">
+    <form method="POST" class="logform">
         {% csrf_token %}
-        <div class="container"> 
-            <label>Username : </label> 
-            <input type="text" placeholder="Enter Username" name="username" required>
-            <label>Password : </label> 
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <button type="submit">Login</button> 
-            <input type="checkbox" checked="checked"> Remember me 
-            <button type="button" class="cancelbtn"> Cancel</button> 
-            Forgot <a href="#"> password? </a> 
-        </div> 
-    </form>   
+        <h2 class="text-center formHead animated bounceInDown">Please Login</h2><br>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="username">username</label>
+            <input type="text" id="username" class="form-control" name="username" required/>
+          </div>
+        
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password</label>
 
+            <input type="password" id="password" class="form-control" name="password" required />
+          </div>
+      
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        
+    </form>   
+</div>
 {% endblock %}

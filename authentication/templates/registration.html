@@ -1,24 +1,53 @@
 {% extends 'index.html' %} {% block content %}
-<h1> Student Login Form </h1>
-
-<form method="POST">
+<div class="container register-container">
+<form method="POST" class="logform">
     {% csrf_token %}
-    <div class="container"> 
-        <label>FirstName : </label> 
-        <input type="text" placeholder="Enter Name" name="f_name" required>
-        <label>LastName : </label> 
-        <input type="text" placeholder="Enter Name" name="l_name" required>
-        <label>Email : </label> 
-        <input type="text" placeholder="Enter Email" name="email" required>
-        <label>Username : </label> 
-        <input type="text" placeholder="Enter Username" name="username" required>
-        <label>Password : </label> 
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <input type="password" placeholder="Confirm Password" name="c_password" required>
-        <button type="submit">Login</button> 
-        <input type="checkbox" checked="checked"> Remember me 
-        <button type="button" class="cancelbtn"> Cancel</button> 
-        Forgot <a href="#"> password? </a> 
-    </div> 
+    <h2 class="text-center formHead animated bounceInDown">Please Register</h2><br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" placeholder="Enter First Name" name="f_name" required>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" placeholder="Enter Last name" name="l_name" required>
+        </div>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" required>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="c_password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
 </form>   
+</div>
 {% endblock %}
+
+  
+
+
+
+  <!-- <div class="container"> 
+    <label>FirstName : </label> 
+    <input type="text" placeholder="Enter Name" name="f_name" required>
+    <label>LastName : </label> 
+    <input type="text" placeholder="Enter Name" name="l_name" required>
+    <label>Email : </label> 
+    <input type="text" placeholder="Enter Email" name="email" required>
+    <label>Username : </label> 
+    <input type="text" placeholder="Enter Username" name="username" required>
+    <label>Password : </label> 
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <input type="password" placeholder="Confirm Password" name="c_password" required>
+    <button type="submit">Login</button> 
+    <input type="checkbox" checked="checked"> Remember me 
+    <button type="button" class="cancelbtn"> Cancel</button> 
+    Forgot <a href="#"> password? </a> 
+</div>  -->

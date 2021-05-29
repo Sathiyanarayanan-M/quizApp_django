@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 <div class="row row-cols-1 row-cols-md-4">
+  {% if user.is_superuser %}
     <div class="col mb-4 ">
       <div class="card h-70">
         <div class="view overlay">
@@ -18,6 +19,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
     <div class="col mb-4 ">
       <div class="card h-100">
         <div class="view overlay">

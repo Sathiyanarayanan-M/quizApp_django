@@ -1,4 +1,27 @@
-{% extends 'index.html' %}
-{% block content %}
-<h1>Hey Welcome {{user.get_full_name }}</h1>
+{% extends 'index.html' %} {% block content %}
+<center><h2 class="heading-main p-4">Hey, {{user.get_full_name }} <br> You Takened Quizzes  </h2></center>
+<div class="container">
+{% if played_quizzes %}
+<div class="row row-cols-1 row-cols-md-5 g-4">
+
+    {% for name, score in played_quizzes %}
+    <div class="col">
+        <div class="card bg-light mb-3 animated bounceInLeft" style="max-width: 18rem">
+        <div class="card-header">{{name}}</div>
+        <div class="card-body">
+            <h5 class="card-title">Quiz Score: {{score}}</h5>
+            <!-- <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                    </p> -->
+        </div>
+        </div>
+    </div>
+    {%endfor%}
+        
+</div>
+    {% else %}
+    <h5 class="heading-main">You have no taken quizzes</h5>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,3 +1,19 @@
-{% extends 'index.html' %} {% block content %}
-<h1>HomeView</h1>
+{% extends 'index.html' %} {% block content %} {% load static %}
+<div class="heading-main">
+  <center><h2 >QuizApp</h2></center>
+</div>
+<div class="container homepage row">
+    <div class="col-md">
+  <img class="img-fluid" src="{% static 'images/undraw_quiz.svg' %}" />
+</div>
+<div class="col-md">
+  <ul class="u-list-home">
+    
+    <h5>Features:</h5>
+    <li>Student Can Able to Attend Quiz</li>
+    <li>Staff will Manage the Quizzess</li>
+    <li>Super user will Manage the Staff and Quizzes</li>
+  </ul>
+</div>
+</div>
 {% endblock %}
