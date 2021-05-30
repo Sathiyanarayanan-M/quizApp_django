@@ -1,16 +1,12 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/django
-# Edit at https://www.toptal.com/developers/gitignore?templates=django
-*.vscode
 ### Django ###
 *.log
 *.pot
-*.pyc
-__pycache__/
+# *.pyc
+# __pycache__/
 local_settings.py
-db.sqlite3
+# db.sqlite3
 db.sqlite3-journal
-media
+# media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -150,13 +146,12 @@ dmypy.json
 .pytype/
 
 # operating system-related files
-# file properties cache/storage on macOS
-*.DS_Store
-# thumbnail cache on Windows
-Thumbs.db
+*.DS_Store #file properties cache/storage on macOS
+Thumbs.db #thumbnail cache on Windows
 
 # profiling data
 .prof
 
-
-# End of https://www.toptal.com/developers/gitignore/api/django
+.vscode
+#images
+# static/images
