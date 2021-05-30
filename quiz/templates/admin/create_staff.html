@@ -1,1 +1,31 @@
-<h1>create-staff</h1>
+{% extends 'index.html' %} {% block content %}
+<div class="container register-container">
+<form method="POST" class="logform">
+    {% csrf_token %}
+    <h2 class="text-center formHead animated bounceInDown">Create Staff</h2><br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" placeholder="Enter First Name" name="f_name" required>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" placeholder="Enter Last name" name="l_name" required>
+        </div>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" required>
+      </div>
+      <div class="form-group col-md-6">
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="c_password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Staff</button>
+</form>   
+</div>
+{% endblock %}

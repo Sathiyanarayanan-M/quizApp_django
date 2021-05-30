@@ -18,14 +18,12 @@ class Authentication:
             password = request.POST['password']
             c_password = request.POST['c_password']
             if password != c_password:
-                return HttpResponse(
-                "<script>alert('The passwords aren't same'); window.location.href = '/registration';</script>"
-            )
+                return render(request,'alert.html',{"message":"Password are not Same","url":"/registration"})
+
             else:
                 if User.objects.filter(username = username).exists():
-                    return HttpResponse(
-                    "<script>alert('User already available'); window.location.href = '/registration';</script>"
-                )
+                     return render(request,'alert.html',{"message":"Username is Already Available","url":"/registration"})
+                
                 else:
                     create_user =  User.objects.create_user( username = username, password = password,email = email,first_name=f_name,last_name=l_name)
                     create_user.save()
@@ -39,12 +37,11 @@ class Authentication:
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    if user.is_staff:
+                    if user.is_staff or user.is_superuser:
                         return redirect('staff')
                     return redirect('dashboard')
                 else:
-                    return HttpResponse( "<script>alert('Something went Wrong'); window.location.href = '/login';</script>")
+                     return render(request,'alert.html',{"message":"Something Went Wrong","url":"/login"})
             else:
-                return HttpResponse( "<script>alert('Invalid Credential'); window.location.href = '/login';</script>")
-
+                return render(request,'alert.html',{"message":"Invalid Credintial","url":"/login"})
         return render(request,'login.html')

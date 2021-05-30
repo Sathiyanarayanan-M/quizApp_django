@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 {% block content %}
 {% load static %}
+<div class="container mt-5">
 <div class="row row-cols-1 row-cols-md-4">
   {% if user.is_superuser %}
     <div class="col mb-4 ">
@@ -15,7 +16,7 @@
         <div class="card-body">
           <h5 class="card-title">Admins</h5>
           <p class="card-text">Create and delete Admins</p>
-          <a href="staff-list" class="btn btn-primary">Manage</a>
+          <a href="create-staff" class="btn btn-primary">Manage</a>
         </div>
       </div>
     </div>
@@ -37,6 +38,7 @@
       </div>
     </div>
   </div>
+</div>
   
   {% endblock %}
   <!-- <div class="card" style="width: 18rem;">

@@ -1,10 +1,6 @@
 $(document).ready(function () {
     $(".launch-modal").click(function () {
       var radio_value = $('input[name="choosed"]:checked').val();
-
-      console.log(radio_value);
-      console.log(variables.explanation);
-      console.log(variables.answer);
       if (radio_value == variables.answer) {
         $(".modal-title").html(
           ' Correct<i class="fas fa-check-circle px-1 "></i>'

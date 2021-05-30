@@ -1,36 +1,37 @@
 {% extends 'index.html' %} {% block content %} {% load static %}
 <div class="container p-2">
-<div class="quiz_cards row row-cols-1 row-cols-md-4 g-4">
-  {% for quiz in quizzes %}
-  <div class="col ">
-    <div class="card animated zoomInLeft">
-      <div class="view overlay">
-        <img
-          class="card-img-top"
-          src="{% static 'images/quiz.jpg' %}"
-          alt="Card image cap"
-        />
-        <a href="#">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-      <div class="card-body">
-        <h4 class="card-title">{{quiz.quiz_name}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Author: {{quiz.author}}</h6>
-        <p class="card-text">
-          <small class="text-muted">Created at: {{quiz.created_at}}</small>
-        </p>
-        <a
-          type="button"
-          href="{% url 'play-quiz' quiz.id  0 %}"
-          class="btn btn-primary btn-md"
-          >Start Play</a
-        >
+  <div class="quiz_cards row row-cols-1 row-cols-md-4 g-4">
+    {% if quizzes %} {% for quiz in quizzes %}
+    <div class="col">
+      <div class="card animated zoomInLeft">
+        <div class="view overlay">
+          <img
+            class="card-img-top"
+            src="{% static 'images/quiz.jpg' %}"
+            alt="Card image cap"
+          />
+          <a href="#">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{quiz.quiz_name}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Author: {{quiz.author}}</h6>
+          <p class="card-text">
+            <small class="text-muted">Created at: {{quiz.created_at}}</small>
+          </p>
+          <a
+            type="button"
+            href="{% url 'play-quiz' quiz.id  0 %}"
+            class="btn btn-primary btn-md"
+            >Start Play</a
+          >
+        </div>
       </div>
     </div>
+    {% endfor %} {% else %}
+    <h5 class="heading-main">No Quizzes Available</h5>
+    {% endif %}
   </div>
-  {% endfor %}
-  
-</div>
 </div>
 {% endblock %}

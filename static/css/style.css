@@ -7,32 +7,30 @@ html,body{
   width: 100%;
 }
 body {
-  background: #141e30; /* fallback for old browsers */
+  background: #141e30; 
   background: -webkit-linear-gradient(
     to right,
     #243b55,
     #141e30
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  );
   background: linear-gradient(
     to right,
     #243b55,
     #141e30
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
 }
 
-/* .homepage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
-} */
+/* NavbBar */
 .navbar{
   background-color: #878cf5;
 }
+
+/* Heading */
 .heading-main{
   color: #878cf5;
 }
+
+/* Homepage */
 .homepage{
   display: flex;
   align-items: center;
@@ -54,6 +52,8 @@ body {
   
 }
 
+/* Login and Registration */
+
 .logform {
   margin-top: 100px;
   max-width: 400px;
@@ -64,10 +64,34 @@ body {
   border-radius: 1rem;
   
 }
-/* Login  */
+
 .login-container{
     margin-top: 100px;
 }
 .register-container{
     margin-top: 20px;
+}
+
+/* question Container */
+.question-cont{
+  background-color: #fff;
+  margin-top: 2rem;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+
+/* Admin Quizzes */
+.quiz-c-header{
+  padding: .5rem;
+}
+.quiz-c-header .heading-main{
+  display: inline-block !important;
+  vertical-align: middle;
+
+}
+.quiz-c-header .btn {
+  display: inline-block !important;
+  float: right;
+
 }

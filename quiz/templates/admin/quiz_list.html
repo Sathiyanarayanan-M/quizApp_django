@@ -1,13 +1,16 @@
 {% extends 'index.html' %}
 {% block content %}
 {% load static %}
-<h1>Quiz List</h1>
+<div class="quiz-c-header container">
+<h2 class="heading-main">Quiz List</h2>
 <a href="/staff/create-quiz" class="btn btn-primary">Create Quiz</a>
+</div>
 <!-- Card -->
+<div class="container">
 <div class="row row-cols-1 row-cols-md-4">
 {% for quiz in quizzes_list %}
   <div class="col mb-4 ">
-    <div class="card h-100">
+    <div class="card h-100 animated slideInRight">
       <div class="view overlay">
         <img class="card-img-top" src="{% static 'images/quiz.jpg' %}"
           alt="Card image cap">

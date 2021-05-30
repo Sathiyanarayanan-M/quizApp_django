@@ -1,5 +1,32 @@
 {% include 'index.html' %}
 {% block contend %}
-<h1>Staff List</h1>
-<h1>(Under Construction)</h1>
+<div class="container">
+    <h2 class="heading-main">Staff List:</h2>
+{% if staffs %}
+    {% for staff in staffs %}
+    <ul>
+        <h4 class="heading-main">{{staff.get_full_name}}</h4>
+    </ul>
+    {%endfor%}
+
+{%else%}
+<h3 class="heading-main">There is no staffs available</h3>
+{%endif%}
+<hr style="height:5px;background-color:#878cf5;">
+</div>
+<div class="container">
+    
+    <h2 class="heading-main">Users List:</h2>
+{% if users %}
+    {% for us in users %}
+    <ul>
+        <h4 class="heading-main">{{us.get_full_name}}</h4>
+    </ul>
+    {%endfor%}
+
+{%else%}
+<h3 class="heading-main">There is no Users available</h3>
+
+{%endif%}
+</div>
 {% endblock %}

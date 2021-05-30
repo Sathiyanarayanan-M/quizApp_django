@@ -1,6 +1,138 @@
 {% extends 'index.html' %} {% block content %}
+<div class="container question-cont">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label class="control-label">Quiz Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Quiz Name"
+        name="quizname"
+        required
+      />
+    </div>
+    {% for i in range %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="card-title">Question {{i}}:</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label class="control-label">Question:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Question"
+            name="question{{i}}"
+            required
+          />
+        </div>
 
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">Option 1:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Option 1"
+                name="question{{i}}option1"
+                required
+              />
+            </div>
+          </div>
+          <!-- Col -->
 
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">Option 2:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Option 2"
+                name="question{{i}}option2"
+                required
+              />
+            </div>
+          </div>
+          <!-- Col -->
+
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">Option 3:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Option 3"
+                name="question{{i}}option3"
+                required
+              />
+            </div>
+          </div>
+          <!-- Col -->
+
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label">Option 4:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Option 4"
+                name="question{{i}}option4"
+                required
+              />
+            </div>
+          </div>
+          <!-- Col -->
+        </div>
+        <!-- Row -->
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputState">Correct Answer</label>
+              <select
+                id="inputState"
+                class="form-control"
+                name="question{{i}}correct_answer"
+                required
+              >
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+                <option value="option4">Option 4</option>
+              </select>
+            </div>
+          </div>
+          <!-- Col -->
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Explanation</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Explanation"
+                name="question{{i}}explanation"
+              />
+            </div>
+          </div>
+          <!-- Col -->
+        </div>
+        <!-- Row -->
+      </div>
+    </div>
+    {% endfor %}
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Create Question</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+<!-- Original -->
+<!-- 
 <form class="form1" method="POST">  
     {% csrf_token %}  
     Quiz Name: 
@@ -34,5 +166,5 @@
     <input  class="pass" type="text" name="question{{i}}explanation" />  
     {% endfor %} 
     <button class="btn btn-primary" type="submit">Create Question </button>  
-</form>
-{% endblock %}
+</form> -->
+<!-- End Original -->
