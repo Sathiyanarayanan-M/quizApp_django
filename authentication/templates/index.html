@@ -1,102 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-<!-- Material Design bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <!-- Material Design bootstrap -->
+    <link
+      rel="icon"
+      href="{% static 'images/title-ico.png %}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'mdb/css/mdb.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'mdb/css/mdb.lite.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'mdb/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'mdb/css/style.css' %}" />
+    <!-- scripts -->
 
-<link rel="stylesheet" href="{% static 'mdb/css/mdb.min.css' %}">
-<link rel="stylesheet" href="{% static 'mdb/css/mdb.lite.min.css' %}">
-<link rel="stylesheet" href="{% static 'mdb/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'mdb/css/style.css' %}">
-<!-- scripts -->
 
-<!-- <script src="{% static 'mdb/js/bootstrap.js' %}"></script>
-<script src="{% static 'mdb/js/bootstrap.min.js' %}"></script> -->
-<script src="{% static 'mdb/js/jquery.js' %}"></script>
-<script src="{% static 'mdb/js/mdb.js' %}"></script>
-<script src="{% static 'mdb/js/mdb.min.js' %}"></script>
-<script src="{% static 'mdb/js/popper.js' %}"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/67d5ee91a4.js" crossorigin="anonymous"></script>
-</head>
-<body>
-   <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark ">
-  <a class="navbar-brand" href="/">QuizApp</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="/">
-          <i class="fas fa-home"></i>Home
-          <!-- <span class="sr-only">(current)</span> -->
-        </a>
-      </li>
-      {% if not user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="/login">
-          <i class="fas fa-sign-in-alt"></i>Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/registration">
-          <i class="fas fa-user-plus"></i>Register</a>
-      </li>
-      {% endif %}
-      {% if user.is_authenticated %}
-        {% if user.is_staff or user.is_superuser %}
-        <li class="nav-item">
-          <a class="nav-link" href="/staff/">
-            <i class="fas fa-edit"></i>Manage</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/staff/quiz-list">
-            <i class="fas fa-chalkboard-teacher"></i>Quizzes</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="/user/quizzes">
-            <i class="fas fa-chalkboard-teacher"></i>Quizzes</a>
-        </li>
-        {% endif %}
-
-        {% if user.is_superuser %}
+    <script src="{% static 'mdb/js/jquery.js' %}"></script>
+    <script src="{% static 'mdb/js/mdb.js' %}"></script>
+    <script src="{% static 'mdb/js/mdb.min.js' %}"></script>
+    <script src="{% static 'mdb/js/popper.js' %}"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/67d5ee91a4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="/">QuizApp</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent-4"
+        aria-controls="navbarSupportedContent-4"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home"></i>Home
+              <!-- <span class="sr-only">(current)</span> -->
+            </a>
+          </li>
+          {% if not user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">
+              <i class="fas fa-sign-in-alt"></i>Login</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/registration">
+              <i class="fas fa-user-plus"></i>Register</a
+            >
+          </li>
+          {% endif %} {% if user.is_authenticated %} {% if user.is_staff or
+          user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="/staff/">
+              <i class="fas fa-edit"></i>Manage</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/staff/quiz-list">
+              <i class="fas fa-chalkboard-teacher"></i>Quizzes</a
+            >
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/user/quizzes">
+              <i class="fas fa-chalkboard-teacher"></i>Quizzes</a
+            >
+          </li>
+          {% endif %} {% if user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link" href="/staff/staff-list">
-            <i class="fas fa-users"></i>Staffs</a>
+              <i class="fas fa-users"></i>Staffs</a
+            >
           </li>
-        {% endif %}
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i> Profile </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/dashboard">Dashboard</a>
-          <a class="dropdown-item" href="/logout">Log out</a>
-        </div>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
-<!--/.Navbar -->
-    {% block content %}
-    {% endblock %}
-</body>
+          {% endif %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink-4"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right dropdown-info"
+              aria-labelledby="navbarDropdownMenuLink-4"
+            >
+              <a class="dropdown-item" href="/dashboard">Dashboard</a>
+              <a class="dropdown-item" href="/logout">Log out</a>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <!--/.Navbar -->
+    {% block content %} {% endblock %}
+  </body>
 </html>
-
-<!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          {% if user.is_authenticated %}
-          <a class="nav-item nav-link" href="/logout">Logout</a>
-          <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-          {% else %}
-          <a class="nav-item nav-link disabled" href="/login">Login</a>
-          <a class="nav-item nav-link disabled" href="/registration">Register</a>
-          {% endif %} -->
