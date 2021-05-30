@@ -187,7 +187,7 @@ class QuizPlayers:
                     score = UserResult.objects.get(
                         user=request.user.username, quiz_id=quiz_id
                     ).score
-                    return render(request,'alert.html',{"message":"Your Score"+score,"url":"/user/quizzes/"})
+                    return render(request,'alert.html',{"message":"Your Score out of 10 is "+score,"url":"/user/quizzes/"})
                 else:
                     return render(request,'alert.html',{"message":"Something Went Wrong","url":"/user/quizzes"})
         else:
