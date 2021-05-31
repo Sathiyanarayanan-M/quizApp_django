@@ -119,10 +119,10 @@ class QuizPlayers:
     def play_quiz(request, quiz_id, qn_no):
         all_q = Questions.objects.filter(quiz_id=int(quiz_id))
         if request.method == "POST":
-            qn_no = int(request.POST["qn_no"]) + 1
+            qn_no = int(request.POST["qn_no"])
+            answer_choosed = request.POST["result"]
             if qn_no in range(0, 10):
                 question_obj = all_q[int(qn_no)]
-                answer_choosed = request.POST["result"]
                 if UserResult.objects.filter(
                     user=request.user.username, quiz_id=quiz_id
                 ).exists():
@@ -137,7 +137,7 @@ class QuizPlayers:
                             "student/play_quiz.html",
                             {
                                 "question_obj": question_obj,
-                                "qn_no": int(qn_no),
+                                "qn_no": int(qn_no)+1,
                                 "quiz_id": quiz_id,
                             },
                         )
@@ -147,7 +147,7 @@ class QuizPlayers:
                             "student/play_quiz.html",
                             {
                                 "question_obj": question_obj,
-                                "qn_no": int(qn_no),
+                                "qn_no": int(qn_no)+1,
                                 "quiz_id": quiz_id,
                             },
                         )
@@ -162,7 +162,7 @@ class QuizPlayers:
                             "student/play_quiz.html",
                             {
                                 "question_obj": question_obj,
-                                "qn_no": int(qn_no),
+                                "qn_no": int(qn_no)+1,
                                 "quiz_id": quiz_id,
                             },
                         )
@@ -176,7 +176,7 @@ class QuizPlayers:
                             "student/play_quiz.html",
                             {
                                 "question_obj": question_obj,
-                                "qn_no": int(qn_no),
+                                "qn_no": int(qn_no)+1,
                                 "quiz_id": quiz_id,
                             },
                         )
@@ -184,9 +184,13 @@ class QuizPlayers:
                 if UserResult.objects.filter(
                     user=request.user.username, quiz_id=quiz_id
                 ).exists():
-                    score = UserResult.objects.get(
+                    u = UserResult.objects.get(
                         user=request.user.username, quiz_id=quiz_id
-                    ).score
+                    )
+                    if answer_choosed == "correct":
+                        u.score = str(int(u.score) + 1)
+                        u.save()
+                    score = u.score
                     return render(request,'alert.html',{"message":"Your Score out of 10 is "+score,"url":"/user/quizzes/"})
                 else:
                     return render(request,'alert.html',{"message":"Something Went Wrong","url":"/user/quizzes"})
@@ -203,14 +207,14 @@ class QuizPlayers:
                     "student/play_quiz.html",
                     {
                         "question_obj": question_obj,
-                        "qn_no": int(qn_no),
+                        "qn_no": int(qn_no)+1,
                         "quiz_id": quiz_id,
                     },
                 )
             return render(
                 request,
                 "student/play_quiz.html",
-                {"question_obj": question_obj, "qn_no": int(qn_no), "quiz_id": quiz_id},
+                {"question_obj": question_obj, "qn_no": int(qn_no)+1, "quiz_id": quiz_id},
             )
 
     @login_required

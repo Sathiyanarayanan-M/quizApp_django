@@ -5,7 +5,7 @@
 <div class="row row-cols-1 row-cols-md-4">
   {% if user.is_superuser %}
     <div class="col mb-4 ">
-      <div class="card h-70">
+      <div class="card bg-transparent border-white h-70 p-1">
         <div class="view overlay">
           <img class="card-img-top" src="{% static 'images/staff.png' %}"
             alt="Card image cap">
@@ -14,15 +14,15 @@
           </a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Admins</h5>
-          <p class="card-text">Create Staffs</p>
-          <a href="create-staff" class="btn btn-primary">Create</a>
+          <h5 class="card-title heading-main">Admins</h5>
+          <p class="card-text text-info">Create Staffs</p>
+          <a href="create-staff" class="btn btn-info">Create</a>
         </div>
       </div>
     </div>
     {% endif %}
     <div class="col mb-4 ">
-      <div class="card h-100">
+      <div class="card border-white bg-transparent p-1 h-100">
         <div class="view overlay">
           <img class="card-img-top" src="{% static 'images/quizzes.png' %}"
             alt="Card image cap">
@@ -31,9 +31,9 @@
           </a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Quizzes</h5>
-      <p class="card-text">Create and Delete Quiz</p>
-      <a href="quiz-list" class="btn btn-primary">Manage</a>
+          <h5 class="card-title heading-main">Quizzes</h5>
+      <p class="card-text text-info ">Create and Delete Quiz</p>
+      <a href="quiz-list" class="btn btn-info">Manage</a>
         </div>
       </div>
     </div>

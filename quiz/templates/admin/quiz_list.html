@@ -10,7 +10,7 @@
 <div class="row row-cols-1 row-cols-md-4">
 {% for quiz in quizzes_list %}
   <div class="col mb-4 ">
-    <div class="card h-100 animated slideInRight">
+    <div class="card h-100 bg-transparent border-white animated slideInRight">
       <div class="view overlay">
         <img class="card-img-top" src="{% static 'images/quiz.jpg' %}"
           alt="Card image cap">
@@ -19,10 +19,10 @@
         </a>
       </div>
       <div class="card-body">
-        <h4 class="card-title">{{quiz.quiz_name}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">Author: {{quiz.author}}</h6>
-        <p class="card-text"><small class="text-muted">Created at: {{quiz.created_at}}</small></p>
-        <a type="button" href="{% url 'delete-quiz' quiz.id %}" class="btn btn-primary btn-md">Delete</a>
+        <h4 class="card-title heading-main">{{quiz.quiz_name}}</h4>
+        <h6 class="card-subtitle mb-2 text-info">Author: {{quiz.author}}</h6>
+        <p class="card-text"><small class="text-info">Created at: {{quiz.created_at}}</small></p>
+        <a type="button" href="{% url 'delete-quiz' quiz.id %}" class="btn btn-danger btn-md">Delete</a>
       </div>
     </div>
   </div>

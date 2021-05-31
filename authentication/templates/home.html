@@ -2,7 +2,8 @@
 <div class="heading-main pt-3">
   <center><h2>QuizApp</h2></center>
 </div>
-<div class="container homepage row  ">
+<div class="container homepage  ">
+  <div class="row">
   <div class="col-md ">
     <img class="img-fluid" src="{% static 'images/undraw_quiz.svg' %}" />
   </div>
@@ -14,6 +15,16 @@
       <li>Admin (Superuser) can Manage the Staff and Quizzes</li>
     </ul>
   </div>
+</div>
+</div>
+<div class="container text-center pb-3 ">
+  {% if not user.is_authenticated %}
+  <div class="row d-block">
+    <a href="{% url 'login' %}" class="btn log-re-btn">Login</a>
+    <span class="text-white"><b>Or</b></span>
+    <a href="{% url 'registration' %}" class="btn log-re-btn">Register</a>
+  </div>
+  {% endif %}
 </div>
 <!-- Footer -->
 

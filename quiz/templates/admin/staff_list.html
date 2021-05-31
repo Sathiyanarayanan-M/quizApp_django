@@ -3,12 +3,28 @@
 <div class="container">
     <h2 class="heading-main">Staff List:</h2>
 {% if staffs %}
-    {% for staff in staffs %}
-    <ul>
-        <h4 class="heading-main">{{staff.get_full_name}}</h4>
-    </ul>
-    {%endfor%}
+<table class="table">
+    <thead>
+        <tr class="text-white ">
+            <th scope="col">Username</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+    </thead>
 
+<tbody>
+    {% for staff in staffs %}
+    <tr class="heading-main">
+        <th scope="row">{{staff.username}}</th>
+        <td>{{staff.get_full_name}}</td>
+        <td>{{staff.email}}</td>
+      </tr>
+    <!-- <ul>
+        <h4 class="heading-main">{{staff.get_full_name}}</h4>
+    </ul> -->
+    {%endfor%}
+</tbody>
+</table>
 {%else%}
 <h3 class="heading-main">There is no staffs available</h3>
 {%endif%}
@@ -18,11 +34,31 @@
     
     <h2 class="heading-main">Users List:</h2>
 {% if users %}
+<table class="table table-sm ">
+    <thead>
+        <tr class="text-white font-weight-bold ">
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody >
+        
     {% for us in users %}
-    <ul>
+        <tr class="heading-main ">
+        <td>{{us.username}}</td>
+        <td>{{us.get_full_name}}</td>
+        <td>{{us.email}}</td>
+      </tr>
+      {%endfor%}
+  </tbody>
+</table>
+        
+          
+    <!-- <ul>
         <h4 class="heading-main">{{us.get_full_name}}</h4>
     </ul>
-    {%endfor%}
+     -->
 
 {%else%}
 <h3 class="heading-main">There is no Users available</h3>
