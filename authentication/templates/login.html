@@ -1,19 +1,19 @@
 {% extends 'index.html'  %} {% block content %}
 {% load static %}
- <div class="container login-container">
+ <div class="container login-container ">
     <form method="POST" class="logform">
         {% csrf_token %}
         <h2 class="text-center formHead animated bounceInDown">Please Login</h2><br>
         <div class="form-outline mb-4">
-            <label class="form-label" for="username">username</label>
-            <input type="text" id="username" class="form-control" name="username" required/>
+            <label class="form-label" for="username">Username</label>
+            <input type="text" id="username" class="form-control" name="username"  required/>
           </div>
         
           <!-- Password input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="password">Password</label>
 
-            <input type="password" id="password" class="form-control" name="password" required />
+            <input type="password" id="password" class="form-control" name="password"  required />
           </div>
       
           <!-- Submit button -->

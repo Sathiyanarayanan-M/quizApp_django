@@ -40,7 +40,7 @@ body {
 .homepage .img-fluid {
   height: 300px;
   width: 300px;
-  float: left;
+  float: right;
 }
 .u-list-home{
   color:#878cf5;
@@ -52,23 +52,34 @@ body {
   padding: 5px;
   
 }
+.fa-heart{
+  color: red;
+}
 
 /* Login and Registration */
 
 .logform {
-  margin-top: 100px;
-  max-width: 400px;
+  max-width: 300px;
   padding: 15px 35px 10px;
   margin: 0 auto;
-  background-color: #fff;
-  border: 1px solid rgba(0,0,0,0,.1);
-  border-radius: 1rem;
+  color: #fff;
+  background: rgba( 135, 140, 245, 0.60 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.0px );
+-webkit-backdrop-filter: blur( 2.0px );
+border-radius: 20px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  
   
 }
 
 .login-container{
-    margin-top: 100px;
+    margin-top: 50px;
 }
+
+
+
+
 .register-container{
     margin-top: 20px;
 }
