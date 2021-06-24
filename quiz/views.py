@@ -111,7 +111,7 @@ class QuizView:
                 staffs.append(staff)
             elif staff.is_staff == False and staff.is_superuser == False:
                 users.append(staff)
-                
+
         print(staffs,users)
         return render(request, "admin/staff_list.html",{"staffs":staffs,"users":users})
 
@@ -120,6 +120,7 @@ class QuizView:
     )
     def delete_quiz(request, quiz_id):
         QuizModel.objects.get(id=quiz_id).delete()
+        UserResult.objects.get(quiz_id=quiz_id).delete()
         return redirect("/staff/quiz-list")
 
 
