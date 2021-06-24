@@ -43,5 +43,5 @@ class Authentication:
                 else:
                      return render(request,'alert.html',{"message":"Something Went Wrong","url":"/login"})
             else:
-                return render(request,'alert.html',{"message":"Invalid Credintial","url":"/login"})
+                return render(request,'alert.html',{"message":"Invalid Credentials","url":"/login"})
         return render(request,'login.html')

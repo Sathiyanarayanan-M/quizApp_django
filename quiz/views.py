@@ -102,8 +102,17 @@ class QuizView:
         lambda u: (u.is_staff and u.is_active), login_url="restricted_access"
     )
     def staflist(request):
-        staffs = get_user_model().objects.filter(is_staff=True)
-        users = get_user_model().objects.filter(is_staff=False)
+
+        all_user = get_user_model().objects.all()
+        staffs = []
+        users = []
+        for staff in all_user:
+            if staff.is_staff == True:
+                staffs.append(staff)
+            elif staff.is_staff == False and staff.is_superuser == False:
+                users.append(staff)
+                
+        print(staffs,users)
         return render(request, "admin/staff_list.html",{"staffs":staffs,"users":users})
 
     @user_passes_test(
