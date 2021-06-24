@@ -16,6 +16,9 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+os.environ['SECRET_KEY'] = '3a$9#!qg7242r3)66x(s7^n9(1$6%!6npjnzwraf(n^-6_5jh('
+os.environ['MONGODB_URI'] = 'mongodb+srv://sathiya1622:EB8pqBxzBgMKwdMx@cluster0.lu5oo.mongodb.net/quizsoft?retryWrites=true&w=majority'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -24,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -130,6 +133,7 @@ LOGIN_REDIRECT_URL = "dashboard"
 STATIC_URL = '/static/'
 
 HOSTNAME = socket.gethostname()
+print(HOSTNAME)
 if HOSTNAME == 'DESKTOP-E2DF7G9':
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'),]
 else:
