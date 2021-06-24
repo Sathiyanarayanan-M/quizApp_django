@@ -5,8 +5,8 @@
 > A Quiz app for Students using Django.
 <p align="center">
     <a href="https://quizsoft.herokuapp.com/" target="_blank">
-        <img  src="static/images/mobile_view.png" alt="Sulu logo" style='padding-right:20px;height:200px;'>
-        <img  src="static/images/laptop_view.png" alt="Sulu logo" style="height:200px;">
+        <img  src="static/images/mobile_view.png" height="200px" >
+        <img  src="static/images/laptop_view.png" height='200px'>
     </a>
 </p>
 <br/>
